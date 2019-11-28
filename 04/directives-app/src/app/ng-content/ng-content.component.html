@@ -1,0 +1,22 @@
+<mat-card class="my-card">
+  <mat-card-header>
+    <mat-card-title>Homer Simpson</mat-card-title>
+    <mat-card-subtitle>Duff!</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="https://i.guim.co.uk/img/media/88f6b98714035656cb18fb282507b60e82edb0d7/0_35_2560_1536/master/2560.jpg?width=300&quality=85&auto=format&fit=max&s=6dc12c01b7d052a59201b5e2b4697ff1"
+    alt="Homer Simpson"
+  />
+  <mat-card-content>
+    <ng-content></ng-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="accent">
+      LIKE
+    </button>
+    <button mat-button color="primary">
+      SHARE
+    </button>
+  </mat-card-actions>
+</mat-card>
