@@ -45,4 +45,8 @@ export class NgForFormComponent implements OnInit {
     this.city = "";
     this.age = 0;
   }
+
+  delete(index) {
+    this.clients.splice(index, 1);
+  }
 }

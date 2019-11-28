@@ -44,3 +44,27 @@
     </button>
   </mat-card-actions>
 </mat-card>
+
+<mat-card class="card" *ngIf="clients.length">
+  <mat-card-content>
+    <section>
+      <mat-list>
+        <h3 matHeader>Clients</h3>
+        <mat-divider></mat-divider>
+
+        <mat-list-item *ngFor="let client of clients; let i = index">
+          <mat-icon matListIcon>person</mat-icon>
+          <h2 matLine>Name: {{ client.name }}</h2>
+          <h2 matLine>Address: {{ client.address }}</h2>
+          <h2 matLine>Phone: {{ client.phone }}</h2>
+          <h2 matLine>City: {{ client.city }}</h2>
+          <h2 matLine>Age: {{ client.age }}</h2>
+          <button mat-icon-button color="accent" (click)="delete(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </section>
+  </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
