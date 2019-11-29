@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -10,9 +11,11 @@ import { EventComponent } from "./event/event.component";
 import {
   MatCardModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatInputModule
 } from "@angular/material";
 import { ChildItemComponent } from "./event/child-item/child-item.component";
+import { ClientsComponent } from "./clients/clients.component";
 
 @NgModule({
   declarations: [
@@ -20,14 +23,17 @@ import { ChildItemComponent } from "./event/child-item/child-item.component";
     InputBindingComponent,
     ClientComponent,
     EventComponent,
-    ChildItemComponent
+    ChildItemComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
