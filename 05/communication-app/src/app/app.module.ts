@@ -21,6 +21,10 @@ import { ChildItemComponent } from "./event/child-item/child-item.component";
 import { ClientsComponent } from "./clients/clients.component";
 import { ParentChildComponent } from "./parent-child/parent-child.component";
 import { TimerComponent } from "./parent-child/timer/timer.component";
+import { OnChangesComponent } from './on-changes/on-changes.component';
+import { NameChangesComponent } from './on-changes/name-changes/name-changes.component';
+import { InterceptingComponent } from './intercepting/intercepting.component';
+import { NameComponent } from './intercepting/name/name.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { TimerComponent } from "./parent-child/timer/timer.component";
     ClientsComponent,
     ItemClientComponent,
     ParentChildComponent,
-    TimerComponent
+    TimerComponent,
+    OnChangesComponent,
+    NameChangesComponent,
+    InterceptingComponent,
+    NameComponent
   ],
   imports: [
     BrowserModule,
