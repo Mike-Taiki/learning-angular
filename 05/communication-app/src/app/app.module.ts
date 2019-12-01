@@ -1,3 +1,4 @@
+import { ItemClientComponent } from "./clients/item-client/item-client.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -12,7 +13,8 @@ import {
   MatCardModule,
   MatButtonModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatFormFieldModule
 } from "@angular/material";
 import { ChildItemComponent } from "./event/child-item/child-item.component";
 import { ClientsComponent } from "./clients/clients.component";
@@ -24,16 +26,18 @@ import { ClientsComponent } from "./clients/clients.component";
     ClientComponent,
     EventComponent,
     ChildItemComponent,
-    ClientsComponent
+    ClientsComponent,
+    ItemClientComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
