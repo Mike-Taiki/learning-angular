@@ -4,7 +4,6 @@ import {
   Input,
   OnDestroy,
   OnChanges,
-  SimpleChange,
   SimpleChanges
 } from "@angular/core";
 
@@ -29,9 +28,12 @@ export class LifeCycleChildComponent implements OnInit, OnDestroy, OnChanges {
 
   colors: string[] = ["accent", "warn", "primary"];
 
+  private intervalRef = null;
+
   constructor() {
     console.log(this.name + " - constructor");
     this.newEvent("constructor");
+    this.intervalRef = setInterval(() => { console.log('intterval') }, 2000);
   }
 
   ngOnInit() {
@@ -57,6 +59,7 @@ export class LifeCycleChildComponent implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy() {
     console.log(this.name + " - ngOnDestroy");
     this.newEvent("ngOnDestroy");
+    clearInterval(this.intervalRef);
   }
 
   newEvent(name: string) {
