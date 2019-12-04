@@ -8,9 +8,11 @@ import { FormsModule } from "@angular/forms";
 import { MainLifecycleComponent } from './main-lifecycle/main-lifecycle.component';
 import { LifeCycleChildComponent } from './main-lifecycle/life-cycle-child/life-cycle-child.component';
 import { ChildChildComponent  } from './main-lifecycle/life-cycle-child/child-child/child-child.component';
+import { CheckComponent } from './check/check.component';
+import { CheckChildComponent } from './check/check-child/check-child.component';
 
 @NgModule({
-  declarations: [AppComponent, MainLifecycleComponent, LifeCycleChildComponent, ChildChildComponent],
+  declarations: [AppComponent, MainLifecycleComponent, LifeCycleChildComponent, ChildChildComponent, CheckComponent, CheckChildComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
