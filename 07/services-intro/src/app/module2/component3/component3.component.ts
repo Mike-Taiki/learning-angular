@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Service1Service } from "../service1.service";
 
 @Component({
-  selector: 'app-component3',
-  templateUrl: './component3.component.html',
-  styleUrls: ['./component3.component.css']
+  selector: "app-component3",
+  templateUrl: "./component3.component.html",
+  styleUrls: ["./component3.component.css"]
 })
 export class Component3Component implements OnInit {
+  num = 0;
 
-  constructor() { }
+  constructor(private myService1: Service1Service) {}
 
   ngOnInit() {
+    this.num = this.myService1.num;
   }
-
 }
