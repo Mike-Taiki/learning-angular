@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-basic',
@@ -8,6 +8,11 @@ import { Observable, Observer } from 'rxjs';
 })
 export class BasicComponent implements OnInit {
 
+  subscription1: Subscription;
+  n1: number = 0;
+  n2: number = 0;
+  s1: string = '';
+  s2: string = '';
   constructor() { }
 
   ngOnInit() {
@@ -26,5 +31,31 @@ export class BasicComponent implements OnInit {
         (n: number) => console.log(n),
         (error) => console.error(error),
         () => console.log('completed.'));
+
+      const timerCount = interval(500);
+      // timerCount.subscribe(
+      //   (n) => console.log(n)
+      // );
+      // console.log("after interval")
+
+      const myIntervalObservable = new Observable(
+        (observer: Observer<any>) => {
+          let i: number = 0;
+          setInterval(() => {
+            i++;
+            console.log('from Observable: ', i);
+            if (i === 10) {
+              observer.complete();
+            } else if (i%2 == 0) {
+              observer.next(i);
+            }
+          }, 1000)
+        }
+      );
+      this.subscription1 = myIntervalObservable.subscribe(
+        (_n) => { this.n1 = _n }, 
+        (error) => { this.s1 = 'Error: ' + error },
+        () => { this.s1 = 'Completed'} 
+      );
   }
 }
