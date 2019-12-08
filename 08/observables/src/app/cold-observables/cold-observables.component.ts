@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { Observable, Observer, interval, Subscription } from "rxjs";
 
 @Component({
-  selector: "app-basic",
-  templateUrl: "./basic.component.html",
-  styleUrls: ["./basic.component.css"]
+  selector: "app-cold-observables",
+  templateUrl: "./cold-observables.component.html",
+  styleUrls: ["./cold-observables.component.css"]
 })
-export class BasicComponent implements OnInit {
+export class ColdObservablesComponent implements OnInit {
   subscription1: Subscription;
   subscription2: Subscription;
   n1: number = 0;
@@ -27,17 +27,6 @@ export class BasicComponent implements OnInit {
       observer.error("error");
       observer.complete();
     });
-    myFirstObservable.subscribe(
-      (n: number) => console.log(n),
-      error => console.error(error),
-      () => console.log("completed.")
-    );
-
-    const timerCount = interval(500);
-    // timerCount.subscribe(
-    //   (n) => console.log(n)
-    // );
-    // console.log("after interval")
 
     const myIntervalObservable = new Observable((observer: Observer<any>) => {
       let i: number = 0;
@@ -54,6 +43,8 @@ export class BasicComponent implements OnInit {
         clearInterval(id);
       };
     });
+
+    this.s1 = "waiting for interval...";
     this.subscription1 = myIntervalObservable.subscribe(
       _n => {
         this.n1 = _n;
@@ -66,17 +57,20 @@ export class BasicComponent implements OnInit {
       }
     );
 
-    this.subscription2 = myIntervalObservable.subscribe(
-      _n => {
-        this.n1 = _n;
-      },
-      error => {
-        this.s1 = "Error: " + error;
-      },
-      () => {
-        this.s1 = "Completed";
-      }
-    );
+    this.s2 = "waiting for interval...";
+    setInterval(() => {
+      this.subscription2 = myIntervalObservable.subscribe(
+        _n => {
+          this.n2 = _n;
+        },
+        error => {
+          this.s2 = "Error: " + error;
+        },
+        () => {
+          this.s2 = "Completed";
+        }
+      );
+    }, 3000);
 
     setTimeout(() => {
       this.subscription1.unsubscribe();
