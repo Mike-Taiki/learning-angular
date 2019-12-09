@@ -19,6 +19,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     StoreDevtoolsModule.instrument({
       maxAge: 25
     })
+    // tttt
   ],
   providers: [],
   bootstrap: [AppComponent]
