@@ -1,4 +1,3 @@
-import { selectPeople, selectPeopleCount } from './store/index';
 import { PersonNew, PersonAll, PersonUpdate, PersonDelete } from './store/person.actions';
 import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 import { Person } from "./person";
@@ -6,6 +5,8 @@ import { Observable } from "rxjs";
 import * as faker from 'faker';
 import { Store, select } from '@ngrx/store';
 import { AppState } from './store';
+
+import * as fromPersonSelectors from  './store/person.selectors';
 
 @Component({
   selector: "app-root",
@@ -22,9 +23,7 @@ export class AppComponent {
   ngOnInit() {
     this.store.dispatch(new PersonAll())
     // this.people$ = this.store.pipe(select('people'));
-    this.people$ = this.store.select(selectPeople);
-    this.store.select(selectPeopleCount)
-      .subscribe(n => console.log(n));
+    this.people$ = this.store.select(fromPersonSelectors.selectAll);
   }
 
   addNew() {
@@ -46,7 +45,7 @@ export class AppComponent {
     p.country= faker.address.country();
     p.age= Math.round(Math.random() * 100);
 
-    this.store.dispatch(new PersonUpdate({person: p}))
+    this.store.dispatch(new PersonUpdate({id: p._id, changes: p}))
   }
 
   delete(p: Person) {
