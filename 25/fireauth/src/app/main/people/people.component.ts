@@ -26,6 +26,7 @@ export class PeopleComponent implements OnInit {
       company: faker.company.companyName(),
       country: faker.address.country()
     };
+    this.mainService.addPerson(p);
   }
 
   generate() {

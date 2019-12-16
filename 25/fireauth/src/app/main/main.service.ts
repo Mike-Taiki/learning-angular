@@ -1,9 +1,7 @@
 import { Observable } from "rxjs";
 import { Person } from "./person";
-import {
-  AngularFireStore,
-  AngularFirestoreCollection
-} from "@angular/fire/firestore";
+import { AngularFirestoreCollection } from "@angular/fire/firestore";
+import { AngularFirestore } from "@angular/fire/firestore"
 import { Injectable } from "@angular/core";
 
 @Injectable({
@@ -14,7 +12,7 @@ export class MainService {
     Person
   > = this.afs.collection("people");
 
-  constructor(private afs: AngularFireStore) {}
+  constructor(private afs: AngularFirestore) {}
 
   getPeople(): Observable<Person[]> {
     return this.peopleCollection.valueChanges();
