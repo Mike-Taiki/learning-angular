@@ -1,6 +1,9 @@
 import { User } from '../user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   states = ["MG", "RS", "SC", "SP", "GO"]
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
   }
@@ -53,7 +56,23 @@ export class RegisterComponent implements OnInit {
       email: this.formRegister.value.email,
       password: this.formRegister.value.password1,
     };
-    // register
+    this.authService.register(newUser)
+      .subscribe(
+        (u) => {
+          this.snackBar.open(
+            'Succesfully registered. Use your new credentials to sign in', 'OK',
+            {duration: 2000}
+          );
+          this.router.navigateByUrl('/auth/login');
+        },
+        (err) => {
+          console.log(err);
+          this.snackBar.open(
+            'Error. You are not registered', 'OK',
+            {duration: 2000}
+          );
+        }
+      );
   }
 
 }
